@@ -20,15 +20,26 @@ Nucamp portfolio project:
 
 """
 
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    # Pass in a puppy name
-    # We insert it to the html with jinja2 templates!
+
     return render_template('index.html')
+
+
+@app.route('/resume')
+def resume():
+
+    return render_template('resume.html')
+
+
+@app.route('/thankyou')
+def thankyou():
+
+    return render_template('thankyou.html')
 
 
 if __name__ == '__main__':

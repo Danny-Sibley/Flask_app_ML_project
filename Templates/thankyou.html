@@ -10,10 +10,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gentium+Basic&family=PT+Sans+Narrow&family=Rokkitt:wght@200&display=swap"rel="stylesheet">
    <!-- build:css css/main.css -->
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css" />
+  <!-- Our css -->
+  <link href= "{{url_for('static', filename = 'css/styles.css')}}" rel = "stylesheet" >
+  <link href= "{{url_for('static', filename = 'css/styles.scss')}}" rel = "stylesheet" >
+  <link href= "{{url_for('static', filename = 'css/styles.css.map')}}" rel = "stylesheet" >
+  <!-- build:css css/main.css -->
+  <script src="https://kit.fontawesome.com/52c2eaac57.js" crossorigin="anonymous"></script>
     <!-- endbuild -->
 </head>
+
 <body>
   <div class="container">
     <div class="row">

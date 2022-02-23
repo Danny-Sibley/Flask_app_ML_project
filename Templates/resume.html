@@ -11,15 +11,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gentium+Basic&family=PT+Sans+Narrow&family=Rokkitt:wght@200&display=swap"rel="stylesheet">
    <!-- build:css css/main.css -->
-  <link rel="stylesheet" href="css/styles.css">
+  <link href= "{{url_for('static', filename = 'css/styles.css')}}" rel = "stylesheet" >
+  <link href= "{{url_for('static', filename = 'css/styles.scss')}}" rel = "stylesheet" >
+  <link href= "{{url_for('static', filename = 'css/styles.css.map')}}" rel = "stylesheet" >
   <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css" />
+  <script src="https://kit.fontawesome.com/52c2eaac57.js" crossorigin="anonymous"></script>
     <!-- endbuild -->
 </head>
 
 <body>
   <!-- navbar -->
   <nav id="navB" class="navbar navbar-expand-lg navbar-dark top p-3">
-    <a class="navbar-brand" href="index.html">Danny Sibley</a>
+    <a class="navbar-brand" href="{{url_for('index')}}">Danny Sibley</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -28,8 +31,8 @@
       <div class="row">
         <div class="col collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link" href="index.html">Home </a>
-            <a class="nav-link active" href="resume.html">Resume<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{{url_for('index')}}">Home </a>
+            <a class="nav-link active" href="{{url_for('resume')}}">Resume<span class="sr-only">(current)</span></a>
             <a class="nav-link" class="btn" data-toggle="modal" data-target="#exampleModal">Contact me</a>
 
           </div>
@@ -190,7 +193,7 @@
       <div class="row justify-content-center">
         <div class="flex-col">
           <ul class="list-unstyled list-inline">
-            <li class="list-inline-item"><a class="btn btn-outline-dark" href="imgs/Danny Sibley Resume.pdf"
+            <li class="list-inline-item"><a class="btn btn-outline-dark" href="{{url_for('static', filename = 'imgs/Danny Sibley Resume.pdf')}}"
                 download="Danny-Sibley's resume">Download A copy</a></li>
 
           </ul>
