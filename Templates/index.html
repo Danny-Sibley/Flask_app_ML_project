@@ -1,251 +1,137 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-  <meta charset="UTF-8">
-  <title>Python Developer | Back-end Developer</title>
-  <!-- stylesheets -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Gentium+Basic&family=PT+Sans+Narrow&family=Rokkitt:wght@200&display=swap"
-    rel="stylesheet">
-  <!-- Our css -->
-  <link href= "{{url_for('static', filename = 'css/styles.css')}}" rel = "stylesheet" >
-  <link href= "{{url_for('static', filename = 'css/styles.scss')}}" rel = "stylesheet" >
-  <link href= "{{url_for('static', filename = 'css/styles.css.map')}}" rel = "stylesheet" >
-  <!-- build:css css/main.css -->
-  <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css" />
-  <script src="https://kit.fontawesome.com/52c2eaac57.js" crossorigin="anonymous"></script>
-  <!-- endbuild -->
-
-</head>
+{% block title  %}Danny Sibley | Machine Learning Home Price Project {% endblock  %}
+{% block content  %}
 
 
-<!-- navbar -->
-<nav id="navB" class="navbar navbar-expand-lg navbar-dark p-3">
-  <a class="navbar-brand" href="{{url_for('index')}}">Danny Sibley</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="container-fluid justify-content-end ">
-    <div class="row">
-      <div class="col collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-link" href="{{url_for('resume')}}">Resume</a>
-          <a class="nav-link" class="btn" data-toggle="modal" data-target="#exampleModal">Contact me</a>
+<form action="{{ url_for('predict')}}"method="post">
+  <section id="introSec" > 
+    <div class="modal-body text-black">
+      <div class="container-fluid px-5 pb-8">
+        <div class="row align-items-center justify-content-center">
+          <div class="col">
+                <h1>Home Price Prediction</h1>
+            <!-- Main Input For Receiving Query to ML -->
+            <div class="card mx-auto mb-5"  style="width: 30rem;">
+              <img src="./static/imgs/house.jpg" class="card-img-top" alt="...">
+              <div class="card-body text-center">
+                <p class="card-text">The machine learning project was created using Python with Numpy, Pandas, scikit-learn and matplotlib for visualizations. The data was collected from RedFin home sales in the Portland Metro area from the last 2 years. Click the Github link to see the full code including a juypter notebook write up. 
+                   </p>
+              </div>
+              <div class="pt-2 pb-2 mx-auto">
+              <a class="btn btn-outline-dark" href="https://github.com/Danny-Sibley/Housing_Prices_ML" role="button"> Github
+               </a>
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="Zipcode">Zipcode:</label>
+                <br>
+                <select class="form-select" aria-label="Default select example" name = "Zipcode">
+                  <option selected>Select Zipcode:</option>
+                  <option value="97003">97003</option>
+                  <option value="97005">97005</option>
+                  <option value="97006">97006</option>
+                  <option value="97007">97007</option>
+                  <option value="97008">97008</option>
+                  <option value="97035">97035</option>
+                  <option value="97062">97062</option>
+                  <option value="97078">97078</option>
+                  <option value="97086">97086</option>
+                  <option value="97113">97113</option>
+                  <option value="97116">97116</option>
+                  <option value="97123">97123</option>
+                  <option value="97124">97124</option>
+                  <option value="97132">97132</option>
+                  <option value="97140">97140</option>
+                  <option value="97201">97201</option>
+                  <option value="97202">97202</option>
+                  <option value="97203">97203</option>
+                  <option value="97206">97206</option>
+                  <option value="97210">97210</option>
+                  <option value="97211">97211</option>
+                  <option value="97212">97212</option>
+                  <option value="97213">97213</option>
+                  <option value="97214">97214</option>
+                  <option value="97215">97215</option>
+                  <option value="97216">97216</option>
+                  <option value="97217">97217</option>
+                  <option value="97218">97218</option>
+                  <option value="97219">97219</option>
+                  <option value="97220">97220</option>
+                  <option value="97221">97221</option>
+                  <option value="97222">97222</option>
+                  <option value="97223">97223</option>
+                  <option value="97224">97224</option>
+                  <option value="97225">97225</option>
+                  <option value="97227">97227</option>
+                  <option value="97229">97229</option>
+                  <option value="97230">97230</option>
+                  <option value="97231">97231</option>
+                  <option value="97232">97232</option>
+                  <option value="97233">97233</option>
+                  <option value="97236">97236</option>
+                  <option value="97239">97239</option>
+                  <option value="97266">97266</option>
+                  <option value="97267">97267</option>
+                  <option value="98664">98664</option>
+                </select>
+              </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</nav>
-
-<!-- intro -->
-<section id="introSec">
-  <header class="py-5">
-    <div class="container">
-      <div class="row align-items-center justify-content-center">
-        <div class="col-md-4 text-left text-md-center mb-3">
-          <img class="rounded-circle img-fluid" src="{{url_for('static', filename = 'imgs/headshot.jpeg')}}" alt="Profile Photo" />
-        </div>
-        <div class="col-md-8">
-          <h1 id="text"></h1>
-          <p class="border-top pt-3 border-dark lead">
-
-
-
-
-            Welcome to my site. I'm a software developer with experience in Python, SQL, Flask, AWS and Docker.
-            I have years of engineering experience in the semiconductor industry and I'm transitioning my career
-            from hardware to software. Follow me on social media to see my journey as I embark on a new career path.
-
-
-
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4">
-          <ul class="list-unstyled text-center list-inline">
-            <li class="list-inline-item"><a href=" https://www.linkedin.com/in/danny-sibley-b21466133/"><i
-                  class="fab fa-linkedin h3"></i></a></li>
-            <a href="https://github.com/Danny-Sibley"><i class="fab fa-github px-3 h3"></i></a>
-            <a href="mailto: sibley.danny@gmail.com"><i class="fas fa-envelope h3"></i></a>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </header>
-</section>
-
-<!-- Skills -->
-<section id="skills">
-  <div class="container-fluid px-5">
-    <div class="row">
-      <div class="col">
-        <h1 class="pt-4 mb-3">Skills:</h1>
-      </div>
-    </div>
-    <div class="d-flex row text-center justify-content-center">
-      <div class="col-4">
-        <i class="fab fa-python display-3"></i>
-        <h2 class="text-center">Python</h2>
-        <p class="text-center text-muted">Flask, Django</p>
-      </div>
-      <div class="col-4">
-        <i class="fab fa-docker display-3"></i>
-        <h2 class="text-center">DevOps</h2>
-        <p class="text-center text-muted">Docker, CI/CD </p>
-      </div>
-      <div class="col-4">
-        <i class="fab fa-aws display-3"></i>
-        <h2 class="text-center">Cloud Computing</h2>
-        <p class="text-center text-muted">AWS, Azure, Google Cloud/ Firestore</p>
-      </div>
-    </div>
-
-    <div class="row text-center mt-3">
-      <div class="col-4">
-        <i class="fas fa-database display-3"></i>
-        <h2 class="text-center">Databases</h2>
-        <p class="text-center text-muted">PostgrsSQL</p>
-      </div>
-      <div class="col-4">
-        <i class="fab fa-git display-3"></i>
-        <h2 class="text-center">Version Control</h2>
-        <p class="text-center text-muted">Bash, Github</p>
-      </div>
-      <div class="col-4">
-        <i class="far fa-object-group display-3"></i>
-        <h2 class="text-center">SDLC</h2>
-        <p class="text-center text-muted">Agile</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- *Projects section -->
-
-<section id="projects">
-  <div class="container-fluid px-5 pb-5 g-2">
-    <div class="row pt-5">
-      <div class="col-6 col-md-3 text-left ">
-        <h1>Latest work</h1>
-        <div class="py-2 text-left">
-          <p class="lead">
-
-
-
-            One of my latest projects was a space invaders style game made using pygame, the source code is on github.
-            The player contols a spaceship that moves and can shoot aliens. The game includes sounds for actions such as
-            shooting or hitting an alien. This was a fun project that allowed me to implement OOP using python.
-
-
-
-
-          </p>
-        </div>
-      </div>
-
-      <!-- *Related course work -->
-      <div class="col-4 mx-auto text-sm-center">
-        <a href="#">
-          <img src=" {{url_for ('static', filename = 'imgs/Screen Shot 2021-12-24 at 6.56.06 AM.jpeg')}}" class="rounded mx-auto d-block img-fluid" alt="Project Screenshot">
-        </a>
-        </li>
-      </div>
-      <div class="col-4">
-        <a href="#">
-          <img src="{{url_for ('static', filename = 'imgs/Screen Shot 2021-12-24 at 6.56.06 AM.jpeg')}}" class="rounded mx-auto d-block img-fluid" alt="Project Screenshot">
-        </a>
-        </li>
-      </div>
-      </ul>
-    </div>
-  </div>
-  </div>
-</section>
-
-<!-- Button trigger modal -->
-
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content" id="modalBody">
-      <div class="modal-header bg-white">
-        <h5 class="modal-title" id="exampleModalLabel">Contact info</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body text-white">
-        <div class="container-fluid px-5 pb-3">
-          <div class="row align-items-center justify-content-center">
-            <div class="col">
-              <form>
-                <div class="form-group">
-                  <label for="name">Name:</label>
-                  <input type="text" class="form-control" id="name" placeholder="Name">
-                </div>
+        <div class="row align-items-center justify-content-center">
+          <div class="col">
+            <div class="form-group">
+              <label for="bedrooms">Bedrooms:</label>
+              <input type="text" class="form-control" name="Bedrooms" id="bedrooms"  placeholder="Bedrooms" required="required" />
             </div>
           </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col">
+            <div class="form-group">
+              <label for="bathrooms">Bathrooms:</label>
+              <input type="text" class="form-control" name="bathrooms" placeholder="Bathrooms" required="required" />
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center justify-content-center">
+          <div class="col">
+            <div class="form-group">
+              <label for="SQFT">SQFT:</label>
+              <input type="text" class="form-control" name="sqft" id="sqft"  placeholder="SQFT" required="required" />
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center justify-content-center">
+            <div class="col">
+              <div class="form-group">
+                <label for="year_built">Year Built:</label>
+                <input type="text" class="form-control" name="year_built" id="year_built"  placeholder="Year Built" required="required" />
+              </div>
+            </div>
+        </div>
           <div class="row align-items-center justify-content-center">
             <div class="col">
               <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" class="form-control" id="email" placeholder="Email Adddress">
+                <label for="lot_size">Lot Size:</label>
+                <input type="text" class="form-control" name="lot_size" id="lot_size"  placeholder="Lot Size" required="required" />
               </div>
             </div>
           </div>
-
-          <div class="row justify-content-center">
-            <div class="col">
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea class="form-control" id="message" rows="3" placeholder="Message"></textarea>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-outline-light" data-dismiss="modal" >Send</button>
+        <button type="submit" class="btn btn-outline-dark" >Predict Price</button>
+        <div>
+          <br>
+          <p class = "h5">{{ prediction_text }}</p> 
         </div>
       </div>
     </div>
-  </div>
-  </form>
-</div>
+  </section>
+</form>
+  
 
-</section>
+ 
 
-<section id="footer">
-  <footer>
-    <div class="container-fluid text-center mx-auto my-5">
-      <div class="row">
-        <div class="col">
-          <h1 class="h6">&copy; Site has been custom created by Vanessa Sibley</h1>
-        </div>
-      </div>
-    </div>
-  </footer>
-</section>
 
-<!-- scripts -->
-<!-- build:js js/main.js -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-<script src="{{url_for('static', filename ='js/scripts.js')}}"></script>
-<!-- endbuild -->
 
-</body>
 
-</html>
+{% endblock  %}
